@@ -1,13 +1,4 @@
-body {
-    height: 100vh;
-    overflow: hidden;
-    cursor: none;
-}
-
 #targetImg {
     position: absolute;
-    left: 50%;
-    top: 50%;
     transform: translate(-50%, -50%);
-    transition: left 0.2s ease-out, top 0.2s ease-out;
 }
