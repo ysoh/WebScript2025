@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="login.html" method="post">
+        <input type="text" id="id" placeholder="아이디">
+        <input type="password" id="pw" placeholder="비밀번호">
+        <button id="btn" type="submit">로그인</button>
+    </form>
+
+    <script>
+        function checkForm() {
+            const id = document.getElementById("id");
+            const pw = document.getElementById("pw");
+
+            if (id.value === "") {
+                alert("아이디를 입력하세요.");
+                id.focus();
+                return false;
+            }
+
+            if (pw.value === "") {
+                alert("비밀번호를 입력하세요.");
+                pw.focus();
+                return false;
+            }
+
+            alert("로그인 성공");
+            return true;
+        }
+
+        document.getElementById("btn").addEventListener("click", function (event) {
+            if (!checkForm()) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>
