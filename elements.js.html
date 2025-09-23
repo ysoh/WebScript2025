@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/elements.css">
+</head>
+
+<body id="body">
+
+</body>
+<script>
+    window.onload = function () {
+        let bodyTag = document.getElementById("body")
+        let h1Tag = document.createElement("h1")
+        let arTag = document.createElement("article")
+        let imgTag = document.createElement("img")
+        let h2Tag = document.createElement("h2")
+        let aTag = document.createElement("a")
+        let pTag = document.createElement("p")
+
+        bodyTag.appendChild(h1Tag)
+        bodyTag.appendChild(arTag)
+
+        arTag.appendChild(imgTag)
+        arTag.appendChild(h2Tag)
+        arTag.appendChild(pTag)
+
+        h2Tag.appendChild(aTag)
+
+        h1Tag.innerHTML = "자바스크립트로 페이지 만들기"
+
+        imgTag.src = "img/valorant.png"
+        imgTag.alt = "발로란트"
+
+        aTag.innerHTML = "발로란트"
+        aTag.href = "https://playvalorant.com/ko-kr/"
+
+        pTag.innerHTML = `
+            라이엇 게임즈에서 개발한 1인칭 슈팅 게임. 국내에선 게임 명칭의 앞 두 글자를 따 발로, 영어권에서는
+            VLRT 또는 VAL이라는 약칭으로도 불린다. 라이엇 게임즈가 서비스하고 있는 게임 중 LoL 유니버스에
+            포함되지 않는 유일한 게임이기도 하다. 밀리터리 FPS의 감각을 유지하면서도 스킬 시스템을 도입한 덕분에 
+            헤비하고 택티컬한 FPS치고 진입 장벽이 상대적으로 낮으며, 남녀노소 무관하게 큰 인기를 끌고 있다. 
+            또한 전략적이고 광범위한 국제 리그와 세계 대회를 개최하여, 출범 2년 만에 150만명의 뷰어십을 뽑아내 
+            차세대 e스포츠로 인기 몰이를 하고 있는 대세 게임 중 하나이다.
+        `
+
+        h1Tag.id="site-title"
+        arTag.id="article-01"
+        imgTag.className="article-image"
+        h2Tag.className = "article-title"
+        pTag.className="article-text"
+    }
+</script>
+
+</html>
