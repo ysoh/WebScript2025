@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Canvas</title>
 </head>
 
 <body>
     <h1 style="text-align: center;">캔버스에 글자 그리기</h1>
     <div style="width: 800px; margin-left: auto; margin-right: auto;">
-        <canvas id="myCanvas" style="width: 100%; height: 500px; border:2px solid orangered">
+        <canvas width="800" height="500" id=myCanvas style="border:2px solid orangered">
             Your browser does not support the HTML5 canvas tag.
         </canvas>
     </div>
@@ -20,13 +20,15 @@
         const ctx = canvas.getContext("2d");
 
         function textMyName() {
+            ctx.font = "30px Arial";
             ctx.fillStyle = "blue";
-            ctx.fillText("홍길동", 50, 10); // 자기 이름으로 변경
+            ctx.fillText("홍길동", 50, 50); // 자기 이름으로 변경
         }
 
         function textDepartment() {
+            ctx.font = "30px Arial";
             ctx.fillStyle = "green";
-            ctx.fillText("컴퓨터공학과", 50, 20); // 자기 학과 이름으로 변경
+            ctx.fillText("컴퓨터공학과", 50, 100); // 자기 학과 이름으로 변경
         }
 
         function drawMyName() {
@@ -35,11 +37,36 @@
         function drawDepartment() {
         }
 
+        function drawHouse() {
+            // 집 그리기
+            
+            // 지붕
+            ctx.fillStyle = "brown";
+            ctx.fillRect(300, 200, 200, 200);
+
+            // 몸통
+            ctx.strokeStyle = "green";
+            ctx.fillStyle = "red";
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+            ctx.moveTo(250, 200);
+            ctx.lineTo(400, 100);
+            ctx.lineTo(550, 200);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
+            
+            // 문
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(370, 300, 60, 100);
+        }
+
         textMyName();
         textDepartment();
         drawMyName();
         drawDepartment();
-    </script>ß
+        drawHouse();
+    </script>
 </body>
 
 </html>
