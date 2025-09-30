@@ -13,16 +13,33 @@
         <canvas id="myCanvas" style="width: 100%; height: 500px; border:2px solid orangered">
             Your browser does not support the HTML5 canvas tag.
         </canvas>
-        <div style="text-align: center; padding: 10px;">
-            <button id="name" style="padding: 5px;">자기이름</button>
-            <button id="department" style="padding: 5px;">학과이름</button>
-            <button id="clear" style="padding: 5px;">지우기</button>
-        </div>
     </div>
 
     <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
 
-    </script>
+        function textMyName() {
+            ctx.fillStyle = "blue";
+            ctx.fillText("홍길동", 50, 10); // 자기 이름으로 변경
+        }
+
+        function textDepartment() {
+            ctx.fillStyle = "green";
+            ctx.fillText("컴퓨터공학과", 50, 20); // 자기 학과 이름으로 변경
+        }
+
+        function drawMyName() {
+        }
+
+        function drawDepartment() {
+        }
+
+        textMyName();
+        textDepartment();
+        drawMyName();
+        drawDepartment();
+    </script>ß
 </body>
 
 </html>
