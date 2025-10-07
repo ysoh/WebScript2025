@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>house.html</title>
+    <style>
+        body {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        canvas {
+            display: block;
+            margin: 10px auto;
+            border: 1px solid #ccc
+        }
+    </style>
+</head>
+
+<body>
+    <h1>창문에 이름 쓰기</h1>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <button>성</button>
+    <button>이름</button>
+    <button onclick="eraseName()">지우기</button>
+    <script>
+        const c = document.getElementById('canvas');
+        const ctx = c.getContext('2d');
+
+        function textFamilyName() {
+            // 이 함수를 완성하여 '성' 버튼이 눌리면 성을 첫번째 창에 출력하시오.
+            // 성은 fillText, strokeText 등의 함수를 사용하여 출력하시오.
+
+        }
+
+        function drawGivenName() {
+            // 이 함수를 완성하여 '이름' 버튼이 눌리면 이름을 두 번째와 세 번째 창에 출력하시오.
+            // 이름은 라인이나 도형그리기 함수(line, rect, arc 등)를 사용하여 출력하시오.
+            // 이름이 외자인 경우 마지막 창에 '집'을 출력하고 2자 이상인 경우 2자까지만 출력하시오.
+
+        }
+
+        function eraseName() {
+            // 이름 지우고 창문 다시 그리기
+
+            drawWindow(ctx, 190, 170, 60)
+            drawWindow(ctx, 270, 170, 60)
+            drawWindow(ctx, 350, 170, 60)
+
+        }
+
+        // 정 사각형 창문을 그리는 함수
+        // x, y: 좌표, size: 한 변 길이
+        function drawWindow(ctx, x, y, size) {
+            // 프레임
+            ctx.fillStyle = '#6b3b1f';
+            ctx.fillRect(x, y, size, size);
+
+            // 유리 (안쪽)
+            const inset = Math.max(4, Math.round(size * 0.12));
+            ctx.fillStyle = '#bfe9ff';
+            ctx.fillRect(x + inset, y + inset, size - inset * 2, size - inset * 2);
+        }
+
+        // 집 그리기 함수
+        function drawHouse() {
+            ctx.clearRect(0, 0, 600, 400);
+
+            // 바닥
+            ctx.fillStyle = '#7db87d';
+            ctx.fillRect(0, 320, 600, 80);
+
+            // 본체
+            ctx.fillStyle = '#ffdba0';
+            ctx.fillRect(120, 140, 360, 180);
+
+            // 지붕
+            ctx.fillStyle = '#a33a2a';
+            ctx.beginPath();
+            ctx.moveTo(100, 150);
+            ctx.lineTo(300, 80);
+            ctx.lineTo(500, 150);
+            ctx.closePath();
+            ctx.fill();
+
+            // 문
+            ctx.fillStyle = '#6b3b1f';
+            ctx.fillRect(270, 220, 60, 100);
+
+            // 세 개의 정사각형 창문
+            drawWindow(ctx, 190, 170, 60)
+            drawWindow(ctx, 270, 170, 60)
+            drawWindow(ctx, 350, 170, 60)
+        }
+
+        drawHouse();
+    </script>
+</body>
+
+</html>
