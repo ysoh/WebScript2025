@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>house.html</title>
+    <style>
+        body {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        canvas {
+            display: block;
+            margin: 10px auto;
+            border: 1px solid #ccc
+        }
+    </style>
+</head>
+
+<body>
+    <h1>창문에 이름 쓰기</h1>
+    <canvas id="canvas" width="600" height="400"></canvas>
+    <button>성</button>
+    <button>이름</button>
+    <button onclick="drawWindow()">지우기</button>
+    <script>
+        const c = document.getElementById('canvas');
+        const ctx = c.getContext('2d');
+
+        function textFamilyName() {
+            // 이 함수를 완성하여 '성' 버튼이 눌리면 성을 첫번째 창에 출력하시오.
+            // 성은 fillText, strokeText 등의 함수를 사용하여 출력하시오.
+
+        }
+
+        function drawGivenName() {
+            // 이 함수를 완성하여 '이름' 버튼이 눌리면 이름을 두 번째와 세 번째 창에 출력하시오.
+            // 이름은 라인이나 도형그리기 함수(line, rect, arc 등)를 사용하여 출력하시오.
+            // 이름이 외자인 경우 마지막 창에 '집'을 출력하고 2자 이상인 경우 2자까지만 출력하시오.
+
+        }
+
+        // 창문을 그리는 간단한 함수
+        // x,y: 왼쪽 위 좌표, size: 한 변 길이
+        function drawWindow(ctx, x, y, size) {
+            // 프레임
+            ctx.fillStyle = '#6b3b1f';
+            ctx.fillRect(x, y, size, size);
+
+            // 유리 (안쪽)
+            const inset = Math.max(4, Math.round(size * 0.12));
+            ctx.fillStyle = '#bfe9ff';
+            ctx.fillRect(x + inset, y + inset, size - inset * 2, size - inset * 2);
+
+            // 십자선
+            ctx.strokeStyle = 'rgba(0,0,0,0.2)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(x + size / 2, y + inset);
+            ctx.lineTo(x + size / 2, y + size - inset);
+            ctx.moveTo(x + inset, y + size / 2);
+            ctx.lineTo(x + size - inset, y + size / 2);
+            ctx.stroke();
+        }
+
+        // 집 그리기
+        function drawHouse() {
+            ctx.clearRect(0, 0, c.width, c.height);
+
+            // 바닥
+            ctx.fillStyle = '#7db87d';
+            ctx.fillRect(0, 320, c.width, 80);
+
+            // 본체
+            ctx.fillStyle = '#ffdba0';
+            const houseW = 360, houseH = 180;
+            const hx = (c.width - houseW) / 2, hy = 320 - houseH;
+            ctx.fillRect(hx, hy, houseW, houseH);
+
+            // 지붕
+            ctx.fillStyle = '#a33a2a';
+            ctx.beginPath();
+            ctx.moveTo(hx - 20, hy + 10);
+            ctx.lineTo(hx + houseW / 2, hy - 60);
+            ctx.lineTo(hx + houseW + 20, hy + 10);
+            ctx.closePath();
+            ctx.fill();
+
+            // 문
+            ctx.fillStyle = '#6b3b1f';
+            const doorW = 60, doorH = 100;
+            ctx.fillRect(c.width / 2 - doorW / 2, hy + houseH - doorH, doorW, doorH);
+
+            // 세 개의 정사각형 창문
+            const winSize = 60;
+            const spacing = 20;
+            const totalWidth = winSize * 3 + spacing * 2;
+            const startX = c.width / 2 - totalWidth / 2;
+            const winY = hy + 30;
+            for (let i = 0; i < 3; i++) {
+                drawWindow(ctx, startX + i * (winSize + spacing), winY, winSize);
+            }
+        }
+
+        drawHouse();
+    </script>
+</body>
+
+</html>
